@@ -21,8 +21,7 @@
                 <TextBlock Text="Login" FontWeight="SemiBold" Foreground="{StaticResource DarkTextBrush}" Margin="0,0,0,8"/>
                 <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" 
                          Height="45" VerticalContentAlignment="Center" FontSize="14" Margin="0,0,0,20"/>
-
-                <TextBlock Text="Password" FontWeight="SemiBold" Foreground="{StaticResource DarkTextBrush}" Margin="0,0,0,8"/>
+                <TextBlock Text="Password" FontWeight="SemiBold" Foreground="{StaticResource DarkTextBrush}" RenderTransformOrigin="0.499,-0.247" Height="22"/>
                 <PasswordBox x:Name="UserPasswordBox" 
                              Height="45" VerticalContentAlignment="Center" FontSize="14" Margin="0,0,0,40"/>
 

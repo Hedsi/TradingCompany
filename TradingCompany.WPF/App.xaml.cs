@@ -62,7 +62,7 @@ namespace TradingCompany.WPF
             services.AddTransient<IOrderDAL>(sp => new OrderDALEF(connectionString, sp.GetRequiredService<IMapper>()));
             services.AddTransient<IOrderItemDAL>(sp => new OrderItemDALEF(connectionString, sp.GetRequiredService<IMapper>()));
 
-            services.AddTransient<IAuthManager, AuthManager>();
+            services.AddTransient<IAuthorizationManager, AuthorizationManager>();
             services.AddTransient<IProductManager, ProductManager>();
             services.AddTransient<ISupplyManager, SupplyManager>();
 

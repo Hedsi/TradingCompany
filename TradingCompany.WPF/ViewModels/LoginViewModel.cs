@@ -12,7 +12,7 @@ namespace TradingCompany.WPF.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-        private readonly IAuthManager _authManager;
+        private readonly IAuthorizationManager _authManager;
 
         private string _login;
         public string Login
@@ -36,7 +36,7 @@ namespace TradingCompany.WPF.ViewModels
         public ICommand LoginCommand { get; }
         public ICommand ExitCommand { get; }
 
-        public LoginViewModel(IAuthManager authManager)
+        public LoginViewModel(IAuthorizationManager authManager)
         {
             _authManager = authManager;
 

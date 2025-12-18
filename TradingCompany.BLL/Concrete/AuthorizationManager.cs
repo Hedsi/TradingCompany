@@ -5,11 +5,11 @@ using TradingCompany.DTO;
 
 namespace TradingCompany.BLL.Concrete
 {
-    public class AuthManager : IAuthManager
+    public class AuthorizationManager : IAuthorizationManager
     {
         private readonly IEmployeeDAL _employeeDal;
 
-        public AuthManager(IEmployeeDAL employeeDal)
+        public AuthorizationManager(IEmployeeDAL employeeDal)
         {
             _employeeDal = employeeDal;
         }

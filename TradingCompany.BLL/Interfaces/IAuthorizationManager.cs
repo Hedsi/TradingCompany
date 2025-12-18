@@ -2,7 +2,7 @@
 
 namespace TradingCompany.BLL.Interfaces
 {
-    public interface IAuthManager
+    public interface IAuthorizationManager
     {
         Employee Login(string login, string password);
 
