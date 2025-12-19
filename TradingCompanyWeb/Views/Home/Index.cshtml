@@ -1,0 +1,23 @@
+﻿<!-- Views/Home/Index.cshtml -->
+@{
+    ViewData["Title"] = "Головна";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Ласкаво просимо до Trading Company!</h1>
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+            <div class="mt-4">
+                <p>Будь ласка, увійдіть у систему для доступу до функціоналу</p>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-primary">Увійти в систему</a>
+            </div>
+    }
+    else
+    {
+            <div class="mt-4">
+                <p>Вітаємо, @User.Identity.Name!</p>
+                <a asp-controller="Products" asp-action="Index" class="btn btn-success">Перейти до продуктів</a>
+            </div>
+    }
+</div>

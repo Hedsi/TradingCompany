@@ -1,0 +1,41 @@
+﻿@model List<TradingCompany.DTO.Product>
+
+<h2>Продукти</h2>
+
+<form method="get">
+    <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="Пошук..." />
+    <button type="submit">Пошук</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Ціна</th>
+            <th>Кількість</th>
+            <th>Категорія</th>
+            <th>Постачальник</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>@p.QuantityInStock</td>
+                <td>@p.Category?.CategoryName</td>
+                <td>@p.Supplier?.Brand</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@p.ProductId">Редагувати</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (User.IsInRole("Менеджер"))
+{
+        <a asp-action="Create" class="btn btn-primary">Додати продукт</a>
+}

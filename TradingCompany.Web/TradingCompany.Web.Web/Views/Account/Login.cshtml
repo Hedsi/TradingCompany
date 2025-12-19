@@ -1,0 +1,70 @@
+﻿@model TradingCompany.Web.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Вхід в систему - ВЕРСІЯ " + DateTime.Now.ToString("HH:mm:ss");
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p><strong>Час генерації сторінки:</strong> @DateTime.Now.ToString("HH:mm:ss.fff")</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="alert alert-info">
+                <strong>Тестові дані:</strong><br>
+                Логін: <code>manager</code> або <code>user</code><br>
+                Пароль: будь-який
+            </div>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Login" class="control-label"></label>
+                <input asp-for="Login" class="form-control" value="manager" />
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" value="123" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <input asp-for="RememberMe" class="form-check-input" />
+                <label asp-for="RememberMe" class="form-check-label">Запам'ятати мене</label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">УВІЙТИ</button>
+            </div>
+        </form>
+
+        <hr>
+
+        <div class="mt-3">
+            <h5>Альтернативні способи:</h5>
+            <a href="/Account/LoginTestPage" class="btn btn-secondary">Тестова сторінка</a>
+            <a href="/test-form.html" class="btn btn-secondary">Проста форма</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+        <script>
+            console.log("Login page loaded at: " + new Date().toLocaleTimeString());
+
+            // Примусово відключаємо кеш
+            if (window.performance && window.performance.navigation.type === 2) {
+                // Якщо сторінка завантажена з кешу - перезавантажити
+                location.reload(true);
+            }
+        </script>
+}

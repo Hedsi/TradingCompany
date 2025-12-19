@@ -1,0 +1,59 @@
+﻿@model TradingCompany.Web.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "Деталі продукту";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID:</dt>
+                        <dd class="col-sm-8">@Model.ProductId</dd>
+
+                        <dt class="col-sm-4">Назва:</dt>
+                        <dd class="col-sm-8">@Model.Name</dd>
+
+                        <dt class="col-sm-4">Ціна:</dt>
+                        <dd class="col-sm-8 text-success fw-bold">@Model.Price.ToString("C")</dd>
+
+                        <dt class="col-sm-4">Кількість на складі:</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge @(Model.QuantityInStock > 10 ? "bg-success" : "bg-warning")">
+                                @Model.QuantityInStock шт.
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-4">Категорія:</dt>
+                        <dd class="col-sm-8">@Model.CategoryName</dd>
+
+                        <dt class="col-sm-4">Постачальник:</dt>
+                        <dd class="col-sm-8">@Model.SupplierName</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group" role="group">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Назад до списку
+                        </a>
+
+                        @if (User.IsInRole("Менеджер"))
+                        {
+                                <a asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-warning">
+                                    <i class="bi bi-pencil"></i> Редагувати
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model.ProductId" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i> Видалити
+                                </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

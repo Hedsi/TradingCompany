@@ -1,0 +1,38 @@
+﻿@model TradingCompanyWeb.ViewModels.ProductViewModel
+
+<h2>Редагувати продукт</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ProductId" />
+
+    <div>
+        <label>Назва</label>
+        <input asp-for="Name" />
+    </div>
+
+    <div>
+        <label>Категорія</label>
+        <select asp-for="CategoryId"
+                asp-items="@(new SelectList(Model.Categories, "CategoryId", "Name"))">
+        </select>
+    </div>
+
+    <div>
+        <label>Постачальник</label>
+        <select asp-for="SupplierId"
+                asp-items="@(new SelectList(Model.Suppliers, "SupplierId", "Name"))">
+        </select>
+    </div>
+
+    <div>
+        <label>Ціна</label>
+        <input asp-for="Price" />
+    </div>
+
+    <div>
+        <label>Кількість</label>
+        <input asp-for="QuantityInStock" />
+    </div>
+
+    <button type="submit">Зберегти</button>
+</form>

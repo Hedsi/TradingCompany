@@ -1,0 +1,56 @@
+﻿@model TradingCompany.Web.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "Видалення продукту";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="text-danger">Ви впевнені, що хочете видалити цей продукт?</h5>
+
+                    <dl class="row mt-4">
+                        <dt class="col-sm-4">ID:</dt>
+                        <dd class="col-sm-8">@Model.ProductId</dd>
+
+                        <dt class="col-sm-4">Назва:</dt>
+                        <dd class="col-sm-8">@Model.Name</dd>
+
+                        <dt class="col-sm-4">Ціна:</dt>
+                        <dd class="col-sm-8">@Model.Price.ToString("C")</dd>
+
+                        <dt class="col-sm-4">Кількість:</dt>
+                        <dd class="col-sm-8">@Model.QuantityInStock шт.</dd>
+
+                        <dt class="col-sm-4">Категорія:</dt>
+                        <dd class="col-sm-8">@Model.CategoryName</dd>
+
+                        <dt class="col-sm-4">Постачальник:</dt>
+                        <dd class="col-sm-8">@Model.SupplierName</dd>
+                    </dl>
+
+                    <div class="alert alert-warning mt-4">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        <strong>Увага!</strong> Цю дію неможливо скасувати. Продукт буде видалено назавжди.
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" name="id" value="@Model.ProductId" />
+                        <button type="submit" class="btn btn-danger me-2">
+                            <i class="bi bi-trash"></i> Так, видалити
+                        </button>
+                        <a asp-action="Details" asp-route-id="@Model.ProductId" class="btn btn-secondary">
+                            <i class="bi bi-x-circle"></i> Ні, повернутись
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

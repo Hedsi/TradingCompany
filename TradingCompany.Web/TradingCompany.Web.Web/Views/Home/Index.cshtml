@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Головна";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Ласкаво просимо до Trading Company!</h1>
+
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                    <div class="card border-success mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5><i class="bi bi-person-check"></i> Ви авторизовані</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Вітаємо, @User.Identity.Name!</p>
+
+                        @if (User.IsInRole("Менеджер"))
+                        {
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-shield-check"></i> 
+                                        <strong>Ви маєте права менеджера</strong>
+                                        <p>Можете створювати, редагувати та видаляти продукти.</p>
+                                    </div>
+                        }
+
+                            <div class="mt-3">
+                                <a asp-controller="Product" asp-action="Index" class="btn btn-primary">
+                                    <i class="bi bi-box"></i> Перейти до продуктів
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            }
+            else
+            {
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5><i class="bi bi-box-arrow-in-right"></i> Увійдіть в систему</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Для роботи з системою необхідно авторизуватись.</p>
+                            <a asp-controller="Account" asp-action="Login" class="btn btn-success">
+                                <i class="bi bi-box-arrow-in-right"></i> Увійти
+                            </a>
+                        </div>
+                    </div>
+            }
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5><i class="bi bi-info-circle"></i> Про систему</h5>
+                    <p>Система управління товарами для торгової компанії.</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="bi bi-check-circle text-success"></i> Управління продуктами</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle text-success"></i> Аутентифікація та авторизація</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle text-success"></i> Ролі користувачів</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

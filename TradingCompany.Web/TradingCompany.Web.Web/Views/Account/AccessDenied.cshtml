@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Доступ заборонено";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white text-center">
+                    <h2><i class="bi bi-shield-exclamation"></i> @ViewData["Title"]</h2>
+                </div>
+                <div class="card-body text-center">
+                    <div class="mb-4">
+                        <i class="bi bi-shield-lock display-1 text-danger"></i>
+                    </div>
+
+                    <h3 class="text-danger mb-4">У вас недостатньо прав для доступу до цієї сторінки</h3>
+
+                    <p class="lead mb-4">
+                        Для доступу до цього ресурсу потрібні додаткові привілеї.<br />
+                        Будь ласка, зверніться до адміністратора системи.
+                    </p>
+
+                    <div class="mt-4">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-lg me-3">
+                            <i class="bi bi-house"></i> На головну
+                        </a>
+
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-outline-secondary btn-lg">
+                                        <i class="bi bi-box-arrow-right"></i> Вийти
+                                    </button>
+                                </form>
+                        }
+                        else
+                        {
+                                <a asp-controller="Account" asp-action="Login" class="btn btn-success btn-lg">
+                                    <i class="bi bi-box-arrow-in-right"></i> Увійти
+                                </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

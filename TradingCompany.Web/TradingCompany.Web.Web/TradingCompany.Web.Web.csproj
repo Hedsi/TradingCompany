@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TradingCompany.BLL\TradingCompany.BLL.csproj" />
+    <ProjectReference Include="..\..\TradingCompany.DALEF\TradingCompany.DALEF.csproj" />
+    <ProjectReference Include="..\..\TradingCompany.DAL\TradingCompany.DAL.csproj" />
+    <ProjectReference Include="..\..\TradingCompany.DTO\TradingCompany.DTO.csproj" />
+    <ProjectReference Include="..\TradingCompany.Web.ServiceDefaults\TradingCompany.Web.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\NewFolder\" />
+  </ItemGroup>
+
+</Project>
